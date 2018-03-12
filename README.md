@@ -23,16 +23,16 @@ devienne alors `-1 5 +` évaluée en `4`
 
 Objectifs:
 
-1. Le code doit compiler
-2. Les tests doivent passer
-3. Les tests devraient être enrichis
+1. Le code doit compiler (Done)
+2. Les tests doivent passer (Done)
+3. Les tests devraient être enrichis (Done)
 4. Supporter les opérateurs suivants:
-    * `+`
-    * `-`
-    * `*`
-    * `/` (optionnel)
-5. Supporter les nombres négatifs
-6. Supporter les nombres à virgules flottantes (optionnel)
+    * `+` (Done)
+    * `-` (Done)
+    * `*` (Done)
+    * `/` (Done)
+5. Supporter les nombres négatifs (Done)
+6. Supporter les nombres à virgules flottantes (Done)
 
 ## Lancer les tests:
 
@@ -56,26 +56,22 @@ Générer le jar
 $ mvn clean package
 ```
 
-Si les tests ne passent pas :scream:
-
-```
-$ mvn clean package -DskipTests
-```
-
 Lancer le programme directement (une fois le jar générer):
 
 ```
-$ java -cp target/esgi-rpn-1.0-SNAPSHOT.jar rpn.CLI "4 3 +"
+$ java -cp target/esgi-rpn-1.0-SNAPSHOT.jar
 ```
 
-# Ressources
+## Documentation des tests
 
-## Maven
+Les 14 premières lignes de la class test EvaluatorTest sont des tests d'expressions normales.
 
-* [Maven wrapper](https://github.com/takari/maven-wrapper)
-* [Maven](https://maven.apache.org/run.html)
-* [Maven en français](https://www.jmdoudoux.fr/java/dej/chap-maven.htm)
+Les lignes 15 à 17 teste l'exception InvalidExpression
 
-## RPN
+Les lignes 18 à 19 testes l'exception WrongOperatorException
 
-* [RPN wikipedia](https://fr.wikipedia.org/wiki/Notation_polonaise_inverse)
+La ligne 20 test l'exception NumberFormatException
+
+## Documentation du projet
+
+La documentation java du projet ce trouve dans le dossier documentation
