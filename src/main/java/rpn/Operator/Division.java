@@ -1,7 +1,7 @@
 package rpn.Operator;
 
 public class Division extends Operator2Operands{
-    Division(){
+    public Division(){
         super("/");
     }
 

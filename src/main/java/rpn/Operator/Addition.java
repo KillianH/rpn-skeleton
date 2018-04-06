@@ -1,7 +1,7 @@
 package rpn.Operator;
 
 public class Addition extends Operator2Operands {
-    Addition() {
+    public Addition() {
         super("+");
     }
 

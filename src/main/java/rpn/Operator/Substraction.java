@@ -1,7 +1,7 @@
 package rpn.Operator;
 
-public class Substract extends Operator2Operands {
-    Substract() {
+public class Substraction extends Operator2Operands {
+    public Substraction() {
         super("-");
     }
 

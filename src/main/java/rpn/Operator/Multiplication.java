@@ -1,7 +1,7 @@
 package rpn.Operator;
 
 public class Multiplication extends Operator2Operands {
-    Multiplication() {
+    public Multiplication() {
         super("*");
     }
 

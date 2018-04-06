@@ -8,7 +8,7 @@ public class Parser {
         this.symbol = symbol;
     }
 
-    Parser(){
+    public Parser(){
         this.symbol = " ";
     }
 
