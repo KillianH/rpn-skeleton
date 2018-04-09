@@ -17,7 +17,7 @@ public class AdditionTest {
         stackOperation.push("4");
 
         Stack<String> result = addition.operate(stackOperation);
-        result.pop().equals("8");
+        result.pop().equals("8.0");
     }
 
     @Test(expected = InvalidOperator.class)

@@ -6,7 +6,7 @@ public class Substraction extends Operator2Operands {
     }
 
     @Override
-    public int apply(int a, int b) {
+    public double apply(double a, double b) {
         return a - b;
     }
 }

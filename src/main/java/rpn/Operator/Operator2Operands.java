@@ -5,6 +5,7 @@ import rpn.exceptions.InvalidOperator;
 
 import java.util.Stack;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public abstract class Operator2Operands extends Operator {
@@ -12,20 +13,19 @@ public abstract class Operator2Operands extends Operator {
         super(symbol);
     }
 
-    public abstract int apply(int a, int b);
+    public abstract double apply(double a, double b);
 
     public Stack<String> operate(Stack<String> operation) throws InvalidOperator, InvalidOperation {
-        System.out.println("operate →" + operation);
         String a = "";
         String b = "";
-        int intA, intB;
+        double doubleA, doubleB;
 
         try{
-            a    = operation.pop();
-            b    = operation.pop();
+            a       = operation.pop();
+            b       = operation.pop();
 
-            intA = parseInt(a);
-            intB = parseInt(b);
+            doubleA = parseDouble(a);
+            doubleB = parseDouble(b);
         }catch(Exception e){
             throw new InvalidOperation(a, b);
         }
@@ -35,7 +35,7 @@ public abstract class Operator2Operands extends Operator {
         if(!symbol.equals(this.symbol)) throw new InvalidOperator(symbol, this.symbol);
 
 
-        operation.push(String.valueOf(apply(intA, intB)));
+        operation.push(String.valueOf(apply(doubleA, doubleB)));
         return operation;
     }
 }

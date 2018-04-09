@@ -45,12 +45,8 @@ public class Calculator {
             hasOperator = false;
             hasOperated = false;
             ArrayList<String> arrayRes = new ArrayList<String>(stackRes);
-            System.out.println("array →" + arrayRes);
-
-            System.out.println("stack →" + stackRes);
 
             for(String token : arrayRes){
-                System.out.println(token);
                 for(Operator operator : operations){
                     if(token.equals(operator.symbol)){
                         stackRes    = operator.operate(stackRes);

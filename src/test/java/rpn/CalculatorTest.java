@@ -11,28 +11,28 @@ public class CalculatorTest {
     public void should_calculate_2_plus_2() throws InvalidOperator, InvalidOperation {
         Calculator calculator = new Calculator();
 
-        assertEquals("4", calculator.calculate("2 2 +"));
+        assertEquals("4.0", calculator.calculate("2 2 +"));
     }
 
     @Test
     public void should_calculate_2_minus_2() throws InvalidOperator, InvalidOperation {
         Calculator calculator = new Calculator();
 
-        assertEquals("0", calculator.calculate("2 2 -"));
+        assertEquals("0.0", calculator.calculate("2 2 -"));
     }
 
     @Test
     public void should_calculate_2_multiply_by_2() throws InvalidOperator, InvalidOperation {
         Calculator calculator = new Calculator();
 
-        assertEquals("4", calculator.calculate("2 2 *"));
+        assertEquals("4.0", calculator.calculate("2 2 *"));
     }
 
     @Test
     public void should_calculate_2_divided_by_2() throws InvalidOperator, InvalidOperation {
         Calculator calculator = new Calculator();
 
-        assertEquals("1", calculator.calculate("2 2 /"));
+        assertEquals("1.0", calculator.calculate("2 2 /"));
     }
 
 
@@ -40,6 +40,6 @@ public class CalculatorTest {
     public void should_calculate_2_plus_2_plus_2() throws InvalidOperator, InvalidOperation {
         Calculator calculator = new Calculator();
 
-        assertEquals("6", calculator.calculate("2 2 + 2 +"));
+        assertEquals("6.0", calculator.calculate("2 2 + 2 +"));
     }
 }

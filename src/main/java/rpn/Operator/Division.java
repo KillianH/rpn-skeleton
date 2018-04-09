@@ -6,7 +6,8 @@ public class Division extends Operator2Operands{
     }
 
     @Override
-    public int apply(int a, int b) {
+    public double apply(double a, double b) {
+        if(b == 0) throw new ArithmeticException("division by 0");
         return a / b;
     }
 }
