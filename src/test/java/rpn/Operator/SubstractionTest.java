@@ -4,54 +4,61 @@ import org.junit.Test;
 import rpn.exceptions.InvalidOperation;
 import rpn.exceptions.InvalidOperator;
 
-import java.util.Stack;
+import java.util.ArrayList;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class SubstractionTest {
     @Test
     public void should_substract_two_number() throws Exception{
         Substraction substract = new Substraction();
 
-        Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("-");
-        stackOperation.push("4");
-        stackOperation.push("4");
+        ArrayList<String> stackOperation = new ArrayList<String>();
+        stackOperation.add("4");
+        stackOperation.add("4");
+        stackOperation.add("-");
 
-        Stack<String> result = substract.operate(stackOperation);
-        result.pop().equals("0");
+        ArrayList<String> toCompare = new ArrayList<String>();
+        toCompare.add("0.0");
+
+        assertEquals(toCompare, substract.operate(stackOperation, 2));
     }
 
     @Test(expected = InvalidOperator.class)
     public void should_throw_invalid_operator() throws Exception {
         Substraction substract = new Substraction();
 
-        Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("+");
-        stackOperation.push("2");
-        stackOperation.push("2");
+        ArrayList<String> stackOperation = new ArrayList<String>();
+        stackOperation.add("2");
+        stackOperation.add("2");
+        stackOperation.add("+");
 
-        Stack<String> result = substract.operate(stackOperation);
+        substract.operate(stackOperation, 2);
     }
 
     @Test(expected = InvalidOperation.class)
     public void should_throw_invalid_operation() throws Exception {
         Substraction substract = new Substraction();
 
-        Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("-");
-        stackOperation.push("a");
-        stackOperation.push("2");
+        ArrayList<String> stackOperation = new ArrayList<String>();
+        stackOperation.add("a");
+        stackOperation.add("2");
+        stackOperation.add("-");
 
-        Stack<String> result = substract.operate(stackOperation);
+        substract.operate(stackOperation, 2);
     }
 
-    @Test(expected = InvalidOperation.class)
-    public void should_throw_invalid_operation_if_only_one_number() throws Exception {
+    @Test
+    public void should_return_negative_if_only_one_number() throws Exception {
         Substraction substract = new Substraction();
 
-        Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("2");
-        stackOperation.push("-");
+        ArrayList<String> stackOperation = new ArrayList<String>();
+        stackOperation.add("2");
+        stackOperation.add("-");
 
-        Stack<String> result = substract.operate(stackOperation);
+        ArrayList<String> toCompare = new ArrayList<>();
+        toCompare.add("-2.0");
+
+        assertEquals(toCompare, substract.operate(stackOperation, 1));
     }
 }

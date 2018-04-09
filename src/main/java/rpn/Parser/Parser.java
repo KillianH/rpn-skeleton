@@ -1,6 +1,7 @@
 package rpn.Parser;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Parser {
     public final String symbol;
@@ -12,13 +13,7 @@ public class Parser {
         this.symbol = " ";
     }
 
-    public Stack<String> parse(String string){
-        Stack<String> result = new Stack<>();
-
-        for (String token : string.split(this.symbol)) {
-            result.push(token);
-        }
-
-        return result;
+    public ArrayList<String> parse(String string){
+        return new ArrayList<>(Arrays.asList(string.split(this.symbol)));
     }
 }

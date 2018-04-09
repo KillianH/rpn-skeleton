@@ -2,7 +2,7 @@ package rpn.Parser;
 
 import org.junit.Test;
 
-import java.util.Stack;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,13 +14,13 @@ public class ParserTest {
 
         String str = "should split text on space";
 
-        Stack<String> toCompare = new Stack<>();
+        ArrayList<String> toCompare = new ArrayList<>();
 
-        toCompare.push("should");
-        toCompare.push("split");
-        toCompare.push("text");
-        toCompare.push("on");
-        toCompare.push("space");
+        toCompare.add("should");
+        toCompare.add("split");
+        toCompare.add("text");
+        toCompare.add("on");
+        toCompare.add("space");
 
         assertEquals(toCompare, parser.parse(str));
     }
@@ -31,13 +31,13 @@ public class ParserTest {
 
         String str = "should&split&text&on&space";
 
-        Stack<String> toCompare = new Stack<>();
+        ArrayList<String> toCompare = new ArrayList<>();
 
-        toCompare.push("should");
-        toCompare.push("split");
-        toCompare.push("text");
-        toCompare.push("on");
-        toCompare.push("space");
+        toCompare.add("should");
+        toCompare.add("split");
+        toCompare.add("text");
+        toCompare.add("on");
+        toCompare.add("space");
 
         assertEquals(toCompare, parser.parse(str));
     }
@@ -48,9 +48,9 @@ public class ParserTest {
 
         String str = "should&split&text&on&space";
 
-        Stack<String> toCompare = new Stack<>();
+        ArrayList<String> toCompare = new ArrayList<>();
 
-        toCompare.push("should&split&text&on&space");
+        toCompare.add("should&split&text&on&space");
 
         assertEquals(toCompare, parser.parse(str));
     }

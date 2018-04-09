@@ -6,9 +6,6 @@ import rpn.exceptions.InvalidOperation;
 import rpn.exceptions.InvalidOperator;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
-import java.util.stream.Stream;
 
 public class Calculator {
     private ArrayList<Operator> operations = new ArrayList<>();
@@ -26,18 +23,18 @@ public class Calculator {
         operations = operators;
     }
 
-    private String beautifyResponse(Stack toBeauty){
+    private String beautifyResponse(ArrayList<String> toBeauty){
         StringBuffer res = new StringBuffer();
 
-        while(!toBeauty.empty()){
-            res.append(" " + toBeauty.pop());
+        for(String token : toBeauty){
+            res.append(" " + token);
         }
 
         return res.toString().trim();
     }
 
     public String calculate(String calculation) throws InvalidOperation, InvalidOperator {
-        Stack<String> stackRes = parser.parse(new StringBuilder(calculation).reverse().toString());
+        ArrayList<String> stackRes = parser.parse(calculation);
         boolean hasOperator;
         boolean hasOperated;
 
@@ -46,10 +43,11 @@ public class Calculator {
             hasOperated = false;
             ArrayList<String> arrayRes = new ArrayList<String>(stackRes);
 
-            for(String token : arrayRes){
+            for(int i = 0; i < arrayRes.size(); i++){
+                String token = arrayRes.get(i);
                 for(Operator operator : operations){
                     if(token.equals(operator.symbol)){
-                        stackRes    = operator.operate(stackRes);
+                        stackRes    = operator.operate(stackRes, i);
                         hasOperated = true;
                         hasOperator = true;
                     }
