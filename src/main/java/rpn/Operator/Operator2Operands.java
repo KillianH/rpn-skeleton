@@ -15,10 +15,7 @@ public abstract class Operator2Operands extends Operator {
     public abstract int apply(int a, int b);
 
     public Stack<String> operate(Stack<String> operation) throws InvalidOperator, InvalidOperation {
-        String symbol = operation.pop();
-
-        if(!symbol.equals(this.symbol)) throw new InvalidOperator(symbol, this.symbol);
-
+        System.out.println("operate →" + operation);
         String a = "";
         String b = "";
         int intA, intB;
@@ -32,6 +29,11 @@ public abstract class Operator2Operands extends Operator {
         }catch(Exception e){
             throw new InvalidOperation(a, b);
         }
+
+        String symbol = operation.pop();
+
+        if(!symbol.equals(this.symbol)) throw new InvalidOperator(symbol, this.symbol);
+
 
         operation.push(String.valueOf(apply(intA, intB)));
         return operation;

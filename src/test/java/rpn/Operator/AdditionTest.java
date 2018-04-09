@@ -12,9 +12,9 @@ public class AdditionTest {
         Addition addition = new Addition();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("4");
-        stackOperation.push("4");
         stackOperation.push("+");
+        stackOperation.push("4");
+        stackOperation.push("4");
 
         Stack<String> result = addition.operate(stackOperation);
         result.pop().equals("8");
@@ -26,6 +26,8 @@ public class AdditionTest {
 
         Stack<String> stackOperation = new Stack<String>();
         stackOperation.push("-");
+        stackOperation.push("2");
+        stackOperation.push("2");
 
         Stack<String> result = addition.operate(stackOperation);
     }
@@ -35,9 +37,9 @@ public class AdditionTest {
         Addition addition = new Addition();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("2");
-        stackOperation.push("a");
         stackOperation.push("+");
+        stackOperation.push("a");
+        stackOperation.push("2");
 
         Stack<String> result = addition.operate(stackOperation);
     }
@@ -47,8 +49,8 @@ public class AdditionTest {
         Addition addition = new Addition();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("2");
         stackOperation.push("+");
+        stackOperation.push("2");
 
         Stack<String> result = addition.operate(stackOperation);
     }

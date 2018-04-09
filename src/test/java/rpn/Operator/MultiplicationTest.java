@@ -12,9 +12,9 @@ public class MultiplicationTest {
         Multiplication multiplication = new Multiplication();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("4");
-        stackOperation.push("4");
         stackOperation.push("*");
+        stackOperation.push("4");
+        stackOperation.push("4");
 
         Stack<String> result = multiplication.operate(stackOperation);
         result.pop().equals("16");
@@ -26,6 +26,8 @@ public class MultiplicationTest {
 
         Stack<String> stackOperation = new Stack<String>();
         stackOperation.push("+");
+        stackOperation.push("2");
+        stackOperation.push("2");
 
         Stack<String> result = multiplication.operate(stackOperation);
     }
@@ -35,9 +37,9 @@ public class MultiplicationTest {
         Multiplication multiplication = new Multiplication();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("2");
-        stackOperation.push("a");
         stackOperation.push("*");
+        stackOperation.push("a");
+        stackOperation.push("2");
 
         Stack<String> result = multiplication.operate(stackOperation);
     }
@@ -47,8 +49,8 @@ public class MultiplicationTest {
         Multiplication multiplication = new Multiplication();
 
         Stack<String> stackOperation = new Stack<String>();
-        stackOperation.push("2");
         stackOperation.push("*");
+        stackOperation.push("2");
 
         Stack<String> result = multiplication.operate(stackOperation);
     }

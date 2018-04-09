@@ -6,7 +6,7 @@ import java.util.Stack;
 
 import static org.junit.Assert.assertEquals;
 
-public class PerserTest {
+public class ParserTest {
 
     @Test
     public void should_split_text_on_space(){
