@@ -1,7 +1,7 @@
 package rpn;
 
-import rpn.exceptions.InvalidExpression;
-import rpn.exceptions.WrongOperatorException;
+import rpn.exceptions.InvalidOperation;
+import rpn.exceptions.InvalidOperator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CLI {
-    public static void main(String[] args) throws WrongOperatorException, InvalidExpression {
+    public static void main(String[] args) throws InvalidOperation, InvalidOperator {
         if(args.length == 0){
             Scanner sc = new Scanner(System.in);
             System.out.println("Please enter your RPN expression :");
-            args = sc.nextLine().split(" ");
-            process(args);
+            String expression = sc.nextLine();
+            process(expression);
         }else if(args.length == 1 && args[0].compareTo("--help") != 0){
             try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
 
                 String line;
                 while ((line = br.readLine()) != null) {
-                    process(line.split(" "));
+                    process(line);
                 }
 
             } catch (IOException e) {
@@ -32,21 +32,20 @@ public class CLI {
         }else if(args.length == 1 && args[0].compareTo("--help") == 0){
             System.out.println(
                     "RPN Expression evaluator\n" +
-                    "Without arguments you will be prompted to enter an expression\n" +
-                    "--help - show this explanation text\n" +
-                    "randomfile.txt - evaluate each line of the file\n" +
-                    "3 5 + - evaluate the given expression"
+                            "Without arguments you will be prompted to enter an expression\n" +
+                            "--help - show this explanation text\n" +
+                            "randomfile.txt - evaluate each line of the file\n" +
+                            "3 5 + - evaluate the given expression"
             );
         }else{
-            process(args);
+            process(Stream.of(args).collect(Collectors.joining(" ")));
         }
     }
 
-    private static void process(String[] array) throws InvalidExpression, WrongOperatorException {
-        String expression = Stream.of(array).collect(Collectors.joining(" "));
+    private static void process(String expression) throws InvalidOperator, InvalidOperation {
         System.out.println("About to evaluate '" + expression + "'");
-        Evaluator evaluator = new Evaluator();
-        double result = evaluator.evaluate(array);
+        Calculator calculator = new Calculator();
+        String result = calculator.calculate(expression);
         System.out.println("> " + result);
     }
 }
