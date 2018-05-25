@@ -14,7 +14,6 @@ public class AdditionEL extends EmiterListener implements ICoffee<Operator2Opera
 
     @Override
     public void call(Operator2OperandEvent event) {
-        System.out.println("coffee");
         double res = addition.apply(event.leftOperand, event.rightOperand);
 
         emit(new OperationAppliedEvent(res));

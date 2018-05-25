@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class Parser {
     public final String symbol;
-    Parser(String symbol){
+    public Parser(String symbol){
         this.symbol = symbol;
     }
 
     public Parser(){
-        this.symbol = " ";
+        this(" ");
     }
 
     public ArrayList<String> parse(String string){

@@ -13,11 +13,13 @@ public class EmiterListener extends EventConsumer implements IEmiter, IListener 
 
     @Override
     public void emit(Event event) {
+        System.out.println("EMIT :" + event.name);
         emiter.emit(event);
     }
 
     @Override
     public void register(String eventKey, ICoffee coffee) {
+        System.out.println("REGISTER :" + eventKey);
         listener.register(eventKey, coffee);
     }
 }
