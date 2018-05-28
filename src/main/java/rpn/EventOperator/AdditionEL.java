@@ -3,19 +3,28 @@ package rpn.EventOperator;
 import rpn.Event.*;
 import rpn.Operator.Addition;
 
-public class AdditionEL extends EmiterListener implements ICoffee<Operator2OperandEvent> {
-    Addition addition = new Addition();
+public class AdditionEL extends EmiterListener implements IOperatorEL {
+    Addition operator               = new Addition();
+    public final Class EVENT_CLASS = AdditionEvent.class;
 
     public AdditionEL(EventDispatcher eventDispatcher) {
         super(eventDispatcher);
 
-        register("AdditionEvent", this);
+        register(getEventName(), new Operator2OperandCoffee(operator, eventDispatcher));
     }
 
     @Override
-    public void call(Operator2OperandEvent event) {
-        double res = addition.apply(event.leftOperand, event.rightOperand);
+    public String getEventName() {
+        return EVENT_CLASS.getSimpleName();
+    }
 
-        emit(new OperationAppliedEvent(res));
+    @Override
+    public Class getEventClass() {
+        return EVENT_CLASS;
+    }
+
+    @Override
+    public String getOperator() {
+        return operator.symbol;
     }
 }

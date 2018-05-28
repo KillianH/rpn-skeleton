@@ -2,10 +2,12 @@ package rpn.EventOperator;
 
 import rpn.Event.Event;
 
-public class OperationAppliedEvent extends Event {
-    public double result;
+import java.util.ArrayList;
 
-    public OperationAppliedEvent(double result) {
+public class OperationAppliedEvent extends Event {
+    public ArrayList<String> result;
+
+    public OperationAppliedEvent(ArrayList<String> result) {
         super("OperationAppliedEvent");
         this.result = result;
     }

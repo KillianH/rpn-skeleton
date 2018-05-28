@@ -3,19 +3,27 @@ package rpn.EventOperator;
 import rpn.Event.*;
 import rpn.Operator.Division;
 
-public class DivisionEL extends EmiterListener implements ICoffee<Operator2OperandEvent> {
-    Division division = new Division();
+public class DivisionEL extends EmiterListener implements IOperatorEL {
+    Division operator             = new Division();
+    public final Class EVENT_CLASS = DivisionEvent.class;
 
     public DivisionEL(EventDispatcher eventDispatcher) {
         super(eventDispatcher);
 
-        register("DivisionEvent", this);
+        register(getEventName(), new Operator2OperandCoffee(operator, eventDispatcher));
     }
 
     @Override
-    public void call(Operator2OperandEvent event) {
-        double res = division.apply(event.leftOperand, event.rightOperand);
+    public String getEventName() {
+        return EVENT_CLASS.getSimpleName();
+    }
 
-        emit(new OperationAppliedEvent(res));
+    @Override
+    public Class getEventClass() {
+        return EVENT_CLASS;
+    }
+
+    public String getOperator() {
+        return operator.symbol;
     }
 }

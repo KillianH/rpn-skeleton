@@ -3,19 +3,27 @@ package rpn.EventOperator;
 import rpn.Event.*;
 import rpn.Operator.Substraction;
 
-public class SubstractionEL extends EmiterListener implements ICoffee<Operator2OperandEvent> {
-    Substraction substraction = new Substraction();
+public class SubstractionEL extends EmiterListener implements IOperatorEL {
+    Substraction operator = new Substraction();
+    public final Class EVENT_CLASS = SubstractionEvent.class;
 
     public SubstractionEL(EventDispatcher eventDispatcher) {
         super(eventDispatcher);
 
-        register("SubstractionEvent", this);
+        register(getEventName(), new Operator2OperandCoffee(operator, eventDispatcher));
     }
 
     @Override
-    public void call(Operator2OperandEvent event) {
-        double res = substraction.apply(event.leftOperand, event.rightOperand);
+    public String getEventName() {
+        return EVENT_CLASS.getSimpleName();
+    }
 
-        emit(new OperationAppliedEvent(res));
+    @Override
+    public Class getEventClass() {
+        return EVENT_CLASS;
+    }
+
+    public String getOperator(){
+        return operator.symbol;
     }
 }

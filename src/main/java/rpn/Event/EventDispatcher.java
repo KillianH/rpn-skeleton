@@ -11,15 +11,20 @@ public class EventDispatcher {
     }
 
     public void register(String eventKey, ICoffee coffee){
+        System.out.println("listen to →" + eventKey);
         if(!registeredEventListener.containsKey(eventKey)) registeredEventListener.put(eventKey, new ArrayList<>());
         registeredEventListener.get(eventKey).add(coffee);
     }
 
     public void emit(Event event){
+        System.out.println("has been emit →" + event.name);
         if(registeredEventListener.get(event.name) != null) {
             for (ICoffee coffee : registeredEventListener.get(event.name)) {
+                System.out.println("has been catch!");
                 coffee.call(event);
             }
+        }else{
+            System.out.println("caution event " + event.name + "was not catch");
         }
     }
 }

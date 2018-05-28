@@ -1,9 +1,7 @@
 package rpn.EventOperator;
 
-import rpn.Event.Event;
+import java.util.ArrayList;
 
 public class AdditionEvent extends Operator2OperandEvent {
-    public AdditionEvent(double leftOperand, double rightOperand) {
-        super("AdditionEvent", leftOperand, rightOperand);
-    }
+    public AdditionEvent(ArrayList<String> operation, int operatorIndex) { super("AdditionEvent", operation, operatorIndex); }
 }

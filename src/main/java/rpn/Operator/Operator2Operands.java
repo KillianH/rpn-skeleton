@@ -1,5 +1,6 @@
 package rpn.Operator;
 
+import rpn.Event.EventDispatcher;
 import rpn.exceptions.InvalidOperation;
 import rpn.exceptions.InvalidOperator;
 
