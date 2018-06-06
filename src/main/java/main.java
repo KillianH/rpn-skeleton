@@ -26,7 +26,7 @@ public class main{
             }
         });
 
-        eventDispatcher.emit(new CalculateEvent("2 a + 1"));
+        eventDispatcher.emit(new CalculateEvent("3 ' +"));
 
     }
 }

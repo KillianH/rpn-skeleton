@@ -10,6 +10,8 @@ import rpn.EventParser.ParserEL;
 import rpn.EventParser.ParserEvent;
 import rpn.Operator.*;
 import rpn.Parser.Parser;
+import rpn.exceptions.ErrorEL;
+import rpn.exceptions.ErrorEvent;
 import rpn.exceptions.InvalidOperation;
 import rpn.exceptions.InvalidOperator;
 
@@ -21,6 +23,7 @@ public class CalculatorEL extends EmiterListener {
     private ArrayList<IOperatorEL> operations = new ArrayList<>();
     private ParserEL parser;
     private EventDispatcher eventDispatcher;
+    private ErrorEL errors;
 
     public CalculatorEL(EventDispatcher eventDispatcher){
         super(eventDispatcher);
@@ -29,6 +32,7 @@ public class CalculatorEL extends EmiterListener {
         operations.add(new MultiplicationEL(eventDispatcher));
         operations.add(new DivisionEL(eventDispatcher));
         parser = new ParserEL(eventDispatcher);
+        errors = new ErrorEL(eventDispatcher);
 
         register("CalculateEvent", new ICoffee<CalculateEvent>() {
             @Override
@@ -60,9 +64,7 @@ public class CalculatorEL extends EmiterListener {
                                 emit((Event) eventConstructor.newInstance(calcul, i));
                                 return;
                             } catch (Exception e) {
-                                //!\ TODO handle error
-
-                                System.out.println(e);
+                                errors.emit(new ErrorEvent(e.getCause()));
                             }
                         }
                     }

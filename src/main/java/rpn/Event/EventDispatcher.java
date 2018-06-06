@@ -24,7 +24,7 @@ public class EventDispatcher {
                 coffee.call(event);
             }
         }else{
-            System.out.println("caution event " + event.name + "was not catch");
+            System.out.println("caution event " + event.name + " was not catch");
         }
     }
 }
