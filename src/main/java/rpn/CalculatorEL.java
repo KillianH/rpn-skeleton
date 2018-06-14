@@ -64,7 +64,8 @@ public class CalculatorEL extends EmiterListener {
                                 emit((Event) eventConstructor.newInstance(calcul, i));
                                 return;
                             } catch (Exception e) {
-                                errors.emit(new ErrorEvent(e.getCause()));
+                                e.printStackTrace();
+                                errors.emit(new ErrorEvent(e));
                             }
                         }
                     }

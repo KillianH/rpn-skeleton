@@ -13,39 +13,30 @@ public class Substraction extends Operator2Operands {
     }
 
     @Override
-    public double apply(double a, double b) {
-        return a - b;
-    }
+    public double apply(double a, double b) { return a - b; }
 
     @Override
-    public ArrayList<String> operate(ArrayList<String> operation, int indexOperator) throws InvalidOperator, InvalidOperation {
-        String rightOperand = "";
-        String leftOperand  = "";
-        double doubleRightOperand, doubleLeftOperand;
-
-        String symbol = operation.get(indexOperator);
-        operation.remove(indexOperator);
-
-        if(!symbol.equals(this.symbol)) throw new InvalidOperator(symbol, this.symbol);
+    public ArrayList<Double> getOperand(ArrayList<String> operation, int indexOperator) throws InvalidOperation {
+        ArrayList<String> res = new ArrayList<>();
+        ArrayList<Double> doubleRes = new ArrayList<>();
 
         try{
-            rightOperand = operation.get(--indexOperator);
+            res.add(operation.get(--indexOperator));
             operation.remove(indexOperator);
             if(indexOperator <= 0){
-                leftOperand = "0";
+
+                res.add("0");
             }else{
-                leftOperand = operation.get(--indexOperator);
+                res.add(operation.get(--indexOperator));
                 operation.remove(indexOperator);
             }
 
-            doubleRightOperand = parseDouble(rightOperand);
-            doubleLeftOperand  = parseDouble(leftOperand);
+            doubleRes.add(parseDouble(res.get(0)));
+            doubleRes.add(parseDouble(res.get(1)));
         }catch(Exception e){
-            throw new InvalidOperation(leftOperand, rightOperand);
+            throw new InvalidOperation(res.get(1), res.get(0));
         }
 
-
-        operation.add(indexOperator, String.valueOf(apply(doubleLeftOperand, doubleRightOperand)));
-        return operation;
+        return doubleRes;
     }
 }
