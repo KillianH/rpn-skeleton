@@ -30,7 +30,6 @@ public class Operator2OperandCoffee implements ICoffee<Operator2OperandEvent> {
         double res = operator.apply(operands.get(0), operands.get(1));
 
         for(int iToRemove = 0; iToRemove < event.toRemove; iToRemove++){
-            System.out.println(Arrays.toString(event.operation.toArray()));
             event.operation.remove(event.operatorIndex);
         }
 

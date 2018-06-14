@@ -43,16 +43,11 @@ public abstract class Operator2Operands extends Operator {
 
         ArrayList<Double> doubleOperand = getOperand(operation,indexOperator);
 
-        System.out.println(Arrays.toString(operation.toArray()));
-        System.out.println(Arrays.toString(doubleOperand.toArray()));
-
         while(indexOperator - doubleOperand.size() < 0){
             indexOperator++;
         }
 
         operation.add(indexOperator - doubleOperand.size(), String.valueOf(apply(doubleOperand.get(1), doubleOperand.get(0))));
-
-        System.out.println(Arrays.toString(operation.toArray()));
 
         return operation;
     }
